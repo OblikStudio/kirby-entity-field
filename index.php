@@ -1,6 +1,7 @@
 <?php
 
 use Kirby\Cms\Form;
+use Kirby\Cms\Structure;
 use Kirby\Data\Yaml;
 
 Kirby::plugin('oblik/entity-field', [
@@ -35,8 +36,16 @@ Kirby::plugin('oblik/entity-field', [
             'validations' => [
                 // needs custom validator to validate the form with:
                 // $this->field()->form($this->requestBody())->errors()
-                // before saving
+                // before saving @see https://github.com/getkirby/ideas/issues/277
             ]
         ]
     ],
+    'fieldMethods' => [
+        'toEntity' => function ($field) {
+            $data = $field->yaml();
+            $entries = [$data];
+            $structure = new Structure($entries);
+            return $structure->first();
+        }
+    ]
 ]);
