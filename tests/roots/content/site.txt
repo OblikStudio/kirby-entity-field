@@ -1,0 +1,8 @@
+Title: Entity Field
+
+----
+
+Data:
+
+myfile:
+  - green.svg

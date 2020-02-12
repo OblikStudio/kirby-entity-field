@@ -1,0 +1,8 @@
+Title: Home
+
+----
+
+Data:
+
+myfile:
+  - red.svg

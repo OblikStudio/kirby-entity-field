@@ -1,10 +1,11 @@
 <?php
 
+use Kirby\Cms\App;
+use Kirby\Cms\Content;
 use Kirby\Cms\Form;
-use Kirby\Cms\Structure;
 use Kirby\Data\Yaml;
 
-Kirby::plugin('oblik/entity-field', [
+App::plugin('oblik/entity-field', [
     'fields' => [
         'entity' => [
             'props' => [
@@ -42,10 +43,7 @@ Kirby::plugin('oblik/entity-field', [
     ],
     'fieldMethods' => [
         'toEntity' => function ($field) {
-            $data = $field->yaml();
-            $entries = [$data];
-            $structure = new Structure($entries);
-            return $structure->first();
+            return new Content($field->yaml(), $field->parent());
         }
     ]
 ]);
