@@ -3,9 +3,9 @@
 		<section class="k-structure-form">
 			<k-form
 				ref="form"
-				:fields="formFields"
-				v-model="model"
 				class="k-structure-form-fields"
+				v-model="model"
+				:fields="formFields"
 				@input="input"
 			/>
 		</section>
@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import { cloneDeep } from 'lodash-es'
-
 export default {
 	props: {
 		endpoints: Object,
@@ -29,10 +27,10 @@ export default {
 	},
 	computed: {
 		formFields () {
-			var fields = {}
+			let fields = {}
 
 			Object.keys(this.fields).forEach(name => {
-				var field = this.fields[name]
+				let field = this.fields[name]
 				field.section = this.name
 				field.endpoints = {
 					field: this.endpoints.field + '+' + name,
@@ -50,12 +48,12 @@ export default {
 			this.$emit('input', this.model)
 		},
 		createFields () {
-			var data = {}
+			let data = {}
 
 			Object.keys(this.fields).forEach(fieldName => {
 				const field = this.fields[fieldName]
 				if (field.default) {
-					data[fieldName] = cloneDeep(field.default)
+					data[fieldName] = this.$helper.clone(field.default)
 				} else {
 					data[fieldName] = null
 				}
@@ -69,7 +67,7 @@ export default {
 			immediate: true,
 			handler (value) {
 				if (value) {
-					this.model = cloneDeep(value)
+					this.model = this.$helper.clone(value)
 				} else {
 					this.model = this.createFields()
 				}
