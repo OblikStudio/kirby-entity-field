@@ -3,17 +3,13 @@
     "dev": "parcel watch src/index.js --no-source-maps -d ./",
     "build": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d ./"
   },
-  "posthtml": {
-    "recognizeSelfClosing": true
-  },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.0.0",
-    "sass": "^1.23.0-module.beta.1",
-    "vue-template-compiler": "^2.6.10"
+    "@vue/component-compiler-utils": "^3.1.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
     "lodash-es": "^4.17.15",
-    "vue": "^2.6.10",
-    "vue-hot-reload-api": "^2.3.3"
+    "vue": "^2.6.11",
+    "vue-hot-reload-api": "^2.3.4"
   }
 }

@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "getkirby/cms": "^3.3",
         "getkirby/composer-installer": "^1.1"
     },
     "extra": {
