@@ -1,7 +1,5 @@
 preset: page
 fields:
-  data:
-    type: entity
+  entity:
     fields:
-      myfile:
-        type: files
+      files: true

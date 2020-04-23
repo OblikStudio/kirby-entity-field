@@ -31,7 +31,14 @@ return [
 				},
 			],
 			'save' => function ($value) {
-				return $this->form($value)->data(true);
+				$data = $this->form($value)->data(true);
+				$dataFiltered = array_filter($data);
+
+				if (count($dataFiltered) > 0) {
+					return $dataFiltered;
+				} else {
+					return null;
+				}
 			},
 			'validations' => [
 				// needs custom validator to validate the form with:

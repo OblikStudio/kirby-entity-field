@@ -2,7 +2,7 @@ Title: Home
 
 ----
 
-Data:
+Entity:
 
-myfile:
+files:
   - red.svg

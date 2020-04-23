@@ -2,7 +2,23 @@ Title: Entity Field
 
 ----
 
-Data:
+Entity:
 
-myfile:
+text: foo
+files:
   - green.svg
+
+----
+
+Structure:
+
+- 
+  entity:
+    text: one
+    files:
+      - green.svg
+- 
+  entity:
+    structure:
+      - 
+        text: bar
