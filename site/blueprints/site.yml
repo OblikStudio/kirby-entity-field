@@ -3,6 +3,7 @@ fields:
   entity:
     label: Header
     icon: title
+    toggle: true
     fields:
       text:
         width: 1/2
