@@ -1,15 +1,21 @@
 <template>
 	<k-field v-bind="$props" class="k-structure-field">
-		<section :class="[{ open: show }, 'k-structure-form']">
-			<div class="k-entity-headline" @click="toggleForm">
-				<div class="k-entity-headline-left">
+		<section :class="['k-structure-form', { 'is-open': isOpen }]">
+			<div
+				:class="['k-entity-header', { 'is-clickable': toggle }]"
+				@click="toggleForm"
+			>
+				<div class="k-entity-header-title">
 					<k-icon v-if="icon" :type="icon"></k-icon>
-					<span>{{ label }}</span>
+					<label class="k-field-label">{{ label }}</label>
 				</div>
-				<div v-if="toggle" class="arrow"></div>
+				<k-icon
+					v-if="toggle"
+					:type="isOpen ? 'angle-up' : 'angle-down'"
+				></k-icon>
 			</div>
 			<k-form
-				v-show="show"
+				v-show="isOpen"
 				ref="form"
 				class="k-structure-form-fields"
 				v-model="model"
@@ -27,13 +33,18 @@ export default {
 		fields: Object,
 		label: String,
 		toggle: Boolean,
-		icon: [Boolean, String],
-		value: true
+		icon: String,
+		value: true,
+		name: true
 	},
+	created() {},
 	data() {
+		let isOpened =
+			localStorage[`entity-open:${this.endpoints.field}`] !== "false";
+
 		return {
 			model: null,
-			show: true
+			isOpen: !this.toggle || isOpened
 		};
 	},
 	computed: {
@@ -60,7 +71,8 @@ export default {
 		},
 		toggleForm() {
 			if (this.toggle) {
-				this.show = !this.show;
+				this.isOpen = !this.isOpen;
+				localStorage[`entity-open:${this.endpoints.field}`] = this.isOpen;
 			}
 		},
 		createFields() {
@@ -93,52 +105,43 @@ export default {
 };
 </script>
 
-<style>
-.k-entity-headline {
-	height: 50px;
-	padding: 0 1.75rem 0 1.5rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 0.85rem;
-	font-weight: 500;
-	color: #16171a;
-	background: rgba(255, 255, 255, 0.15);
-	border-bottom: 1px solid transparent;
-}
-.k-entity-headline-left {
-	display: flex;
-}
-.k-entity-headline-left .k-icon {
-	margin-right: 0.65rem;
-}
-.k-entity-headline-left span:not(.k-icon) {
-	opacity: 0.75;
-}
-.k-entity-headline .arrow {
-	width: 10px;
-	height: 10px;
-	border: 1px solid #aaa;
-	transform: rotate(45deg);
-	border-width: 0 1px 1px 0;
-	margin-bottom: 3px;
+<style scoped>
+.k-field-label {
+	padding-bottom: 0;
 }
 
-.k-structure-field[type="entity"] > .k-structure-form {
+.k-structure-form:not(.is-open) {
+	border-bottom: 0;
+	border-style: dashed;
 	box-shadow: none;
 }
-.k-structure-field[type="entity"] > .k-structure-form.open {
-	box-shadow: rgba(22, 23, 26, 0.05) 0px 0px 0px 3px;
+
+.k-structure-form.is-open .k-entity-header {
+	background: rgb(17, 17, 17, 0.025);
+}
+</style>
+
+<style>
+.k-entity-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.75rem 1.5rem;
+	border-bottom: 1px dashed #ccc;
+	user-select: none;
 }
 
-.k-structure-form.open .k-entity-headline {
-	border-bottom: 1px dashed #ccc;
-	background: rgba(0, 0, 0, 0.025);
+.k-entity-header.is-clickable,
+.k-entity-header.is-clickable label {
+	cursor: pointer;
 }
-.k-structure-form.open .k-entity-headline .arrow {
-	margin-top: 6px;
-	margin-bottom: 0;
-	border-width: 1px 0 0 1px;
+
+.k-entity-header-title {
+	display: flex;
+}
+
+.k-entity-header-title .k-icon {
+	margin-right: 0.5rem;
 }
 
 .k-structure-field[type="entity"] > .k-field-header {

@@ -1,6 +1,8 @@
 preset: page
 fields:
   entity:
+    icon: star
+    toggle: true
     fields:
       text: true
       files: true
