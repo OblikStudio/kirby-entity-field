@@ -1,11 +1,18 @@
 preset: page
 fields:
   entity:
-    icon: star
-    toggle: true
+    label: Header
+    icon: title
     fields:
-      text: true
-      files: true
+      text:
+        width: 1/2
+      logo:
+        type: files
+        multiple: false
+        width: 1/2
+      structure:
+        fields:
+          url: true
   structure:
     fields:
       entity:

@@ -4,9 +4,12 @@ Title: Entity Field
 
 Entity:
 
-text: foo
-files:
-  - green.svg
+text: Hello World!
+structure:
+  - 
+    url: https://example.com/foo
+  - 
+    url: https://example.com/bar
 
 ----
 

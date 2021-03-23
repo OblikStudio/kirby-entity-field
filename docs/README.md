@@ -14,34 +14,38 @@ composer require oblik/kirby-entity-field
 
 ## Usage
 
-### Field
-
 In the blueprint:
 
 ```yml
 fields:
-  footer:
-    type: entity
-    icon: text #optional
-    toggle: true #optional
-    fields:
-      title:
-        type: text
-      logo:
-        type: files
-```
-
-In your `site/config/config.php`:
-
-```php
-return [
-    'oblik.entity-field.toggle' => true, // default: false
-];
+    header:
+        type: entity
+        icon: title # optional
+        toggle: true # optional
+        fields:
+            title:
+                type: text
+            logo:
+                type: files
 ```
 
 In the template, use the `toEntity()` method:
 
 ```php
-$footer = $page->footer()->toEntity();
-echo $footer->title();
+$header = $page->header()->toEntity();
+echo $header->title();
+```
+
+### Toggle
+
+When the `toggle` option is enabled, the field form can be collapsed. The state is stored in `localStorage` for when the user navigates away from the page and back.
+
+To enable it globally for all fields (instead of explicitly setting it in the blueprint for each field), add the following to your `site/config/config.php`:
+
+```php
+return [
+    'oblik.entity-field' => [
+        'toggle' => true
+    ]
+];
 ```
