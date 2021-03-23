@@ -5,12 +5,21 @@ use Kirby\Cms\Form;
 use Kirby\Data\Yaml;
 
 return [
+	'options' => [
+		'toggle' => false,
+	],
 	'fields' => [
 		'entity' => [
 			'props' => [
 				'fields' => function (array $fields) {
 					return $fields;
-				}
+				},
+				'icon' => function ($icon = false) {
+					return $icon;
+				},
+				'toggle' => function ($toggle = null) {
+					return $toggle ?? option('oblik.entity-field.toggle');
+				},
 			],
 			'computed' => [
 				'value' => function () {

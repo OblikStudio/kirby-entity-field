@@ -22,11 +22,21 @@ In the blueprint:
 fields:
   footer:
     type: entity
+    icon: text #optional
+    toggle: true #optional
     fields:
       title:
         type: text
       logo:
         type: files
+```
+
+In your `site/config/config.php`:
+
+```php
+return [
+    'oblik.entity-field.toggle' => true, // default: false
+];
 ```
 
 In the template, use the `toEntity()` method:
