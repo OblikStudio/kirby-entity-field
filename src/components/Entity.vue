@@ -35,7 +35,7 @@ export default {
 		toggle: Boolean,
 		icon: String,
 		value: true,
-		name: true
+		name: true,
 	},
 	created() {},
 	data() {
@@ -44,26 +44,26 @@ export default {
 
 		return {
 			model: null,
-			isOpen: !this.toggle || isOpened
+			isOpen: !this.toggle || isOpened,
 		};
 	},
 	computed: {
 		formFields() {
 			let fields = {};
 
-			Object.keys(this.fields).forEach(name => {
+			Object.keys(this.fields).forEach((name) => {
 				let field = this.fields[name];
 				field.section = this.name;
 				field.endpoints = {
 					field: this.endpoints.field + "+" + name,
 					section: this.endpoints.section,
-					model: this.endpoints.model
+					model: this.endpoints.model,
 				};
 				fields[name] = field;
 			});
 
 			return fields;
-		}
+		},
 	},
 	methods: {
 		input() {
@@ -78,7 +78,7 @@ export default {
 		createFields() {
 			let data = {};
 
-			Object.keys(this.fields).forEach(fieldName => {
+			Object.keys(this.fields).forEach((fieldName) => {
 				const field = this.fields[fieldName];
 				if (field.default) {
 					data[fieldName] = this.$helper.clone(field.default);
@@ -88,7 +88,7 @@ export default {
 			});
 
 			return data;
-		}
+		},
 	},
 	watch: {
 		value: {
@@ -99,9 +99,9 @@ export default {
 				} else {
 					this.model = this.createFields();
 				}
-			}
-		}
-	}
+			},
+		},
+	},
 };
 </script>
 
