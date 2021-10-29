@@ -10,8 +10,8 @@
     }
   ],
   "require": {
-    "getkirby/composer-installer": "^1.1",
-    "getkirby/cms": "^3.3"
+    "getkirby/composer-installer": "^1.2",
+    "getkirby/cms": "^3.5"
   },
   "extra": {
     "installer-name": "entity-field"
