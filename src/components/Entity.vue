@@ -17,7 +17,7 @@
         v-model="model"
         class="k-structure-form-fields"
         :fields="formFields"
-        @input="input"
+        @input="onInput"
       />
     </section>
   </k-field>
@@ -87,7 +87,7 @@ export default {
   },
 
   methods: {
-    input() {
+    onInput() {
       this.$emit("input", this.model);
     },
 
