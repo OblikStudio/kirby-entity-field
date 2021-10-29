@@ -1,9 +1,16 @@
 {
 	"scripts": {
 		"dev": "kirbyup src/index.js --watch",
-		"build": "kirbyup src/index.js"
+		"build": "kirbyup src/index.js",
+		"lint": "eslint \"src/**/*.{js,vue}\"",
+		"lint:fix": "npm run lint -- --fix",
+		"format": "prettier --write \"src/**/*.{css,js,vue}\""
 	},
 	"devDependencies": {
-		"kirbyup": "^0.20.0"
+		"eslint": "^8.1.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-vue": "^8.0.1",
+		"kirbyup": "^0.20.0",
+		"prettier": "^2.4.1"
 	}
 }

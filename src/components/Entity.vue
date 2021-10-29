@@ -6,19 +6,16 @@
 				@click="toggleForm"
 			>
 				<div class="k-entity-header-title">
-					<k-icon v-if="icon" :type="icon"></k-icon>
+					<k-icon v-if="icon" :type="icon" />
 					<label class="k-field-label">{{ label }}</label>
 				</div>
-				<k-icon
-					v-if="toggle"
-					:type="isOpen ? 'angle-up' : 'angle-down'"
-				></k-icon>
+				<k-icon v-if="toggle" :type="isOpen ? 'angle-up' : 'angle-down'" />
 			</div>
 			<k-form
 				v-show="isOpen"
 				ref="form"
-				class="k-structure-form-fields"
 				v-model="model"
+				class="k-structure-form-fields"
 				:fields="formFields"
 				@input="input"
 			/>
@@ -34,10 +31,16 @@ export default {
 		label: String,
 		toggle: Boolean,
 		icon: String,
-		value: true,
-		name: true,
+		value: {
+			type: Boolean,
+			default: true,
+		},
+		name: {
+			type: Boolean,
+			default: true,
+		},
 	},
-	created() {},
+
 	data() {
 		let isOpened =
 			localStorage[`entity-open:${this.endpoints.field}`] !== "false";
@@ -47,49 +50,25 @@ export default {
 			isOpen: !this.toggle || isOpened,
 		};
 	},
+
 	computed: {
 		formFields() {
-			let fields = {};
-
-			Object.keys(this.fields).forEach((name) => {
-				let field = this.fields[name];
-				field.section = this.name;
-				field.endpoints = {
-					field: this.endpoints.field + "+" + name,
-					section: this.endpoints.section,
-					model: this.endpoints.model,
+			return Object.keys(this.fields).reduce((fields, name) => {
+				fields[name] = {
+					...this.fields[name],
+					section: this.name,
+					endpoints: {
+						field: this.endpoints.field + "+" + name,
+						section: this.endpoints.section,
+						model: this.endpoints.model,
+					},
 				};
-				fields[name] = field;
-			});
 
-			return fields;
+				return fields;
+			}, {});
 		},
 	},
-	methods: {
-		input() {
-			this.$emit("input", this.model);
-		},
-		toggleForm() {
-			if (this.toggle) {
-				this.isOpen = !this.isOpen;
-				localStorage[`entity-open:${this.endpoints.field}`] = this.isOpen;
-			}
-		},
-		createFields() {
-			let data = {};
 
-			Object.keys(this.fields).forEach((fieldName) => {
-				const field = this.fields[fieldName];
-				if (field.default) {
-					data[fieldName] = this.$helper.clone(field.default);
-				} else {
-					data[fieldName] = null;
-				}
-			});
-
-			return data;
-		},
-	},
 	watch: {
 		value: {
 			immediate: true,
@@ -100,6 +79,29 @@ export default {
 					this.model = this.createFields();
 				}
 			},
+		},
+	},
+
+	methods: {
+		input() {
+			this.$emit("input", this.model);
+		},
+
+		toggleForm() {
+			if (this.toggle) {
+				this.isOpen = !this.isOpen;
+				localStorage[`entity-open:${this.endpoints.field}`] = this.isOpen;
+			}
+		},
+
+		createFields() {
+			return Object.keys(this.fields).reduce((data, fieldName) => {
+				const field = this.fields[fieldName];
+				data[fieldName] = field.default
+					? this.$helper.clone(field.default)
+					: null;
+				return data;
+			}, {});
 		},
 	},
 };
