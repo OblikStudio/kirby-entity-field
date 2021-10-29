@@ -6,10 +6,10 @@
         @click="toggleForm"
       >
         <div class="k-entity-header-title">
-          <k-icon v-if="icon" :type="icon" />
+          <k-icon v-show="icon" :type="icon" />
           <label class="k-field-label">{{ label }}</label>
         </div>
-        <k-icon v-if="toggle" :type="isOpen ? 'angle-up' : 'angle-down'" />
+        <k-icon v-show="toggle" :type="isOpen ? 'angle-up' : 'angle-down'" />
       </div>
       <k-form
         v-show="isOpen"
