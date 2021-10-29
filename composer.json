@@ -1,19 +1,19 @@
 {
-    "name": "oblik/kirby-entity-field",
-    "description": "Kirby field that acts as a one-entry structure.",
-    "type": "kirby-plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Hristiyan Dodov",
-            "email": "h.dodov@gmail.com"
-        }
-    ],
-    "require": {
-        "getkirby/composer-installer": "^1.1",
-        "getkirby/cms": "^3.3"
-    },
-    "extra": {
-        "installer-name": "entity-field"
+  "name": "oblik/kirby-entity-field",
+  "description": "Kirby field that acts as a one-entry structure.",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hristiyan Dodov",
+      "email": "h.dodov@gmail.com"
     }
+  ],
+  "require": {
+    "getkirby/composer-installer": "^1.1",
+    "getkirby/cms": "^3.3"
+  },
+  "extra": {
+    "installer-name": "entity-field"
+  }
 }

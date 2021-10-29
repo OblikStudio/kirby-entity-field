@@ -1,6 +1,6 @@
 <?php
 
 return [
-	'debug' => true,
-	'api.csrf' => 'dev'
+    'debug' => true,
+    'api.csrf' => 'dev'
 ];
