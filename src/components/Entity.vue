@@ -42,12 +42,9 @@ export default {
   },
 
   data() {
-    let isOpened =
-      localStorage.getItem(`entity-open:${this.endpoints.field}`) !== "false";
-
     return {
       model: null,
-      isOpen: !this.toggle || isOpened,
+      isOpen: null,
     };
   },
 
@@ -84,6 +81,10 @@ export default {
         }
       },
     },
+  },
+
+  created() {
+    this.isOpen = !this.toggle || localStorage.getItem(this.id) !== "false";
   },
 
   methods: {
