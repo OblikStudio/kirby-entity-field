@@ -11,8 +11,9 @@
         </div>
         <k-icon v-show="toggle" :type="isOpen ? 'angle-up' : 'angle-down'" />
       </div>
+
       <k-form
-        v-show="isOpen"
+        v-if="isOpen"
         ref="form"
         v-model="model"
         class="k-structure-form-fields"
