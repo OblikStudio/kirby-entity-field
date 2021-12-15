@@ -55,22 +55,18 @@ export default {
     },
 
     formFields() {
-      return Object.values(this.fields).reduce(
-        (fields, [fieldName, fieldValue]) => {
-          fields[fieldName] = {
-            ...fieldValue,
-            section: this.name,
-            endpoints: {
-              field: this.endpoints.field + "+" + fieldName,
-              section: this.endpoints.section,
-              model: this.endpoints.model,
-            },
-          };
+      return Object.keys(this.fields).reduce((fields, fieldName) => {
+        let field = this.fields[fieldName];
+        field.section = this.name;
+        field.endpoints = {
+          field: this.endpoints.field + "+" + fieldName,
+          section: this.endpoints.section,
+          model: this.endpoints.model,
+        };
+        fields[fieldName] = field;
 
-          return fields;
-        },
-        {}
-      );
+        return fields;
+      }, {});
     },
   },
 
@@ -104,15 +100,13 @@ export default {
     },
 
     createFields() {
-      return Object.values(this.fields).reduce(
-        (data, [fieldName, fieldValue]) => {
-          data[fieldName] = fieldValue.default
-            ? this.$helper.clone(fieldValue.default)
-            : null;
-          return data;
-        },
-        {}
-      );
+      return Object.keys(this.fields).reduce((data, fieldName) => {
+        const field = this.fields[fieldName];
+        data[fieldName] = field.default
+          ? this.$helper.clone(field.default)
+          : null;
+        return data;
+      }, {});
     },
   },
 };
