@@ -1,15 +1,7 @@
-# Composer
-composer.phar
-/vendor
-
-# Kirby
 /kirby
 /media
+/node_modules
 /site/accounts
 /site/sessions
-
-# Node
-/node_modules
-
-# Parcel
-/.cache
+/vendor
+.php-cs-fixer.cache
