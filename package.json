@@ -1,16 +1,18 @@
 {
-  "scripts": {
-    "dev": "parcel watch src/index.js --no-source-maps -d ./",
-    "build": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d ./"
-  },
-  "devDependencies": {
-    "@vue/component-compiler-utils": "^3.1.2",
-    "cssnano": "^4.1.10",
-    "parcel": "^1.12.3",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "dependencies": {
-    "vue": "^2.6.11",
-    "vue-hot-reload-api": "^2.3.4"
-  }
+	"scripts": {
+		"dev": "kirbyup src/index.js --watch",
+		"build": "kirbyup src/index.js",
+		"prepare": "husky install"
+	},
+	"devDependencies": {
+		"husky": "^8.0.1",
+		"kirbyup": "^1.0.2",
+		"prettier": "^2.7.1"
+	},
+	"prettier": {
+		"htmlWhitespaceSensitivity": "ignore"
+	},
+	"volta": {
+		"node": "18.7.0"
+	}
 }
