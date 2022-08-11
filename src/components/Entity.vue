@@ -17,7 +17,7 @@
 				ref="form"
 				class="k-structure-form-fields"
 				v-show="isOpen"
-				:fields="formFields"
+				:fields="form"
 				:value="value"
 				@input="$emit('input', $event)"
 			/>
@@ -45,17 +45,24 @@ export default {
 		};
 	},
 	computed: {
-		formFields() {
+		/**
+		 * Method for generating the form config, similar to that of Kirby's
+		 * native structure field:
+		 * https://github.com/getkirby/kirby/blob/3.7.3/panel/src/components/Forms/Field/StructureField.vue#L158-L179
+		 */
+		form() {
 			let fields = {};
 
 			Object.keys(this.fields).forEach((name) => {
 				let field = this.fields[name];
+
 				field.section = this.name;
 				field.endpoints = {
 					field: this.endpoints.field + "+" + name,
 					section: this.endpoints.section,
 					model: this.endpoints.model,
 				};
+
 				fields[name] = field;
 			});
 
