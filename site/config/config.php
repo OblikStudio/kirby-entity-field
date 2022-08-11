@@ -7,5 +7,8 @@ return [
 	],
 	'panel' => [
 		'dev' => true
+	],
+	'content' => [
+		'locking' => false
 	]
 ];
