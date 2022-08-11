@@ -17,9 +17,9 @@
 				ref="form"
 				class="k-structure-form-fields"
 				v-show="isOpen"
-				v-model="model"
 				:fields="formFields"
-				@input="input"
+				:value="value"
+				@input="$emit('input', $event)"
 			/>
 		</section>
 	</k-field>
@@ -41,7 +41,6 @@ export default {
 			localStorage[`entity-open:${this.endpoints.field}`] !== "false";
 
 		return {
-			model: null,
 			isOpen: !this.toggle || isOpened,
 		};
 	},
@@ -64,38 +63,9 @@ export default {
 		},
 	},
 	methods: {
-		input() {
-			this.$emit("input", this.model);
-		},
 		toggleForm() {
 			this.isOpen = !this.isOpen;
 			localStorage[`entity-open:${this.endpoints.field}`] = this.isOpen;
-		},
-		createFields() {
-			let data = {};
-
-			Object.keys(this.fields).forEach((fieldName) => {
-				const field = this.fields[fieldName];
-				if (field.default) {
-					data[fieldName] = this.$helper.clone(field.default);
-				} else {
-					data[fieldName] = null;
-				}
-			});
-
-			return data;
-		},
-	},
-	watch: {
-		value: {
-			immediate: true,
-			handler(value) {
-				if (value) {
-					this.model = this.$helper.clone(value);
-				} else {
-					this.model = this.createFields();
-				}
-			},
 		},
 	},
 };
