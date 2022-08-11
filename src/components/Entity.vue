@@ -8,18 +8,15 @@
 				@click="toggle ? toggleForm() : null"
 			>
 				<div class="k-entity-header-title">
-					<k-icon v-if="icon" :type="icon"></k-icon>
+					<k-icon v-if="icon" :type="icon" />
 					<label class="k-field-label">{{ label }}</label>
 				</div>
-				<k-icon
-					v-if="toggle"
-					:type="isOpen ? 'angle-up' : 'angle-down'"
-				></k-icon>
+				<k-icon v-if="toggle" :type="isOpen ? 'angle-up' : 'angle-down'" />
 			</component>
 			<k-form
-				v-show="isOpen"
 				ref="form"
 				class="k-structure-form-fields"
+				v-show="isOpen"
 				v-model="model"
 				:fields="formFields"
 				@input="input"
@@ -39,7 +36,6 @@ export default {
 		value: true,
 		name: true,
 	},
-	created() {},
 	data() {
 		let isOpened =
 			localStorage[`entity-open:${this.endpoints.field}`] !== "false";
