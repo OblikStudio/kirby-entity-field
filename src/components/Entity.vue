@@ -1,6 +1,6 @@
 <template>
-	<k-field v-bind="$props" class="k-structure-field">
-		<section :class="['k-structure-form', { 'is-open': isOpen }]">
+	<k-field v-bind="$props" :class="['k-structure-form', { 'is-open': isOpen }]">
+		<section>
 			<div
 				:class="['k-entity-header', { 'is-clickable': toggle }]"
 				@click="toggleForm"
@@ -106,18 +106,22 @@ export default {
 </script>
 
 <style scoped>
-.k-field-label {
-	padding-bottom: 0;
-}
-
-.k-structure-form:not(.is-open) {
-	border-bottom: 0;
-	border-style: dashed;
-	box-shadow: none;
+.k-structure-form > :deep(.k-field-header) {
+	display: none;
 }
 
 .k-structure-form.is-open .k-entity-header {
 	background: rgb(17, 17, 17, 0.025);
+}
+
+.k-structure-form:not(.is-open) :deep(section) {
+	box-shadow: none;
+	border-style: dashed;
+	border-bottom: none;
+}
+
+.k-field-label {
+	padding-bottom: 0;
 }
 </style>
 
@@ -126,8 +130,8 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0.75rem 1.5rem;
-	border-bottom: 1px dashed #ccc;
+	padding: var(--spacing-3) var(--spacing-6);
+	border-bottom: 1px dashed var(--color-border);
 	user-select: none;
 }
 
@@ -141,10 +145,6 @@ export default {
 }
 
 .k-entity-header-title .k-icon {
-	margin-right: 0.5rem;
-}
-
-.k-structure-field[type="entity"] > .k-field-header {
-	display: none;
+	margin-right: var(--spacing-2);
 }
 </style>
