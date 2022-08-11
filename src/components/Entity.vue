@@ -35,7 +35,7 @@ export default {
 		fields: Object,
 		label: String,
 		toggle: Boolean,
-		icon: [Boolean, String],
+		icon: String,
 		value: true,
 		name: true,
 	},

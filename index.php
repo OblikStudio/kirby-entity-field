@@ -15,7 +15,7 @@ App::plugin('oblik/entity-field', [
 				'fields' => function (array $fields) {
 					return $fields;
 				},
-				'icon' => function ($icon = false) {
+				'icon' => function ($icon = null) {
 					return $icon;
 				},
 				'toggle' => function ($toggle = null) {
