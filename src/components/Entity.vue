@@ -1,9 +1,11 @@
 <template>
 	<k-field v-bind="$props" :class="['k-structure-form', { 'is-open': isOpen }]">
 		<section>
-			<div
-				:class="['k-entity-header', { 'is-clickable': toggle }]"
-				@click="toggleForm"
+			<component
+				class="k-entity-header"
+				:is="toggle ? 'button' : 'div'"
+				:type="toggle ? 'button' : null"
+				@click="toggle ? toggleForm() : null"
 			>
 				<div class="k-entity-header-title">
 					<k-icon v-if="icon" :type="icon"></k-icon>
@@ -13,7 +15,7 @@
 					v-if="toggle"
 					:type="isOpen ? 'angle-up' : 'angle-down'"
 				></k-icon>
-			</div>
+			</component>
 			<k-form
 				v-show="isOpen"
 				ref="form"
@@ -70,10 +72,8 @@ export default {
 			this.$emit("input", this.model);
 		},
 		toggleForm() {
-			if (this.toggle) {
-				this.isOpen = !this.isOpen;
-				localStorage[`entity-open:${this.endpoints.field}`] = this.isOpen;
-			}
+			this.isOpen = !this.isOpen;
+			localStorage[`entity-open:${this.endpoints.field}`] = this.isOpen;
 		},
 		createFields() {
 			let data = {};
@@ -130,13 +130,13 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	width: 100%;
 	padding: var(--spacing-3) var(--spacing-6);
 	border-bottom: 1px dashed var(--color-border);
 	user-select: none;
 }
 
-.k-entity-header.is-clickable,
-.k-entity-header.is-clickable label {
+button.k-entity-header label {
 	cursor: pointer;
 }
 
