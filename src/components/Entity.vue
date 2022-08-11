@@ -110,7 +110,7 @@ export default {
 	display: none;
 }
 
-.k-structure-form.is-open .k-entity-header {
+.k-structure-form.is-open > section > .k-entity-header {
 	background: rgb(17, 17, 17, 0.025);
 }
 
