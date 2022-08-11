@@ -24,10 +24,6 @@
 		"issues": "https://github.com/OblikStudio/kirby-entity-field/issues",
 		"source": "https://github.com/OblikStudio/kirby-entity-field"
 	},
-	"scripts": {
-		"fix": "php-cs-fixer fix",
-		"test": "phpunit"
-	},
 	"require": {
 		"getkirby/cms": "^3.7",
 		"getkirby/composer-installer": "^1.1"

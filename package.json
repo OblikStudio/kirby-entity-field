@@ -1,19 +1,10 @@
 {
 	"scripts": {
 		"dev": "kirbyup src/index.js --watch",
-		"build": "kirbyup src/index.js",
-		"prepare": "husky install"
+		"build": "kirbyup src/index.js"
 	},
 	"devDependencies": {
-		"husky": "^8.0.1",
-		"kirbyup": "^1.0.2",
-		"lint-staged": "^13.0.3",
-		"prettier": "^2.7.1"
-	},
-	"lint-staged": {
-		"./src/**/*": "prettier --write",
-		"*.(json|md)": "prettier --write",
-		"*.php": "php-cs-fixer fix --config=.php-cs-fixer.dist.php"
+		"kirbyup": "^1.0.2"
 	},
 	"prettier": {
 		"htmlWhitespaceSensitivity": "ignore"
