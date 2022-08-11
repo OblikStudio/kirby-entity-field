@@ -2,5 +2,10 @@
 
 return [
 	'debug' => true,
-	'api.csrf' => 'dev'
+	'api' => [
+		'csrf' => 'dev'
+	],
+	'panel' => [
+		'dev' => true
+	]
 ];
