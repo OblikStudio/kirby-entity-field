@@ -1,5 +1,8 @@
 <template>
-	<k-field v-bind="$props" :class="['k-structure-form', { 'is-open': isOpen }]">
+	<k-field
+		v-bind="$props"
+		:class="['k-structure-form', { 'is-open': isOpen }]"
+	>
 		<section>
 			<component
 				class="k-entity-header"
@@ -11,7 +14,10 @@
 					<k-icon v-if="icon" :type="icon" />
 					<label class="k-field-label">{{ label }}</label>
 				</div>
-				<k-icon v-if="toggle" :type="isOpen ? 'angle-up' : 'angle-down'" />
+				<k-icon
+					v-if="toggle"
+					:type="isOpen ? 'angle-up' : 'angle-down'"
+				/>
 			</component>
 			<k-form
 				ref="form"

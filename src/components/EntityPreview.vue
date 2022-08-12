@@ -19,7 +19,9 @@ export default {
 			return [
 				{
 					text: `${fields.length} ${this.$t(
-						`oblik.entity-field.${fields.length === 1 ? "field" : "fields"}`
+						`oblik.entity-field.${
+							fields.length === 1 ? "field" : "fields"
+						}`
 					)}`,
 				},
 			];
