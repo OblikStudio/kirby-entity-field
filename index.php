@@ -2,7 +2,7 @@
 
 use Kirby\Cms\App;
 use Kirby\Cms\Content;
-use Kirby\Cms\Form;
+use Kirby\Form\Form;
 use Kirby\Data\Yaml;
 
 App::plugin('oblik/entity-field', [
@@ -24,14 +24,22 @@ App::plugin('oblik/entity-field', [
 			],
 			'computed' => [
 				'value' => function () {
-					$model = Yaml::decode($this->value);
-					return $this->form($model)->values();
+					$data = Yaml::decode($this->value);
+					return $this->form($data)->values();
 				},
 				'fields' => function () {
+					if (empty($this->fields)) {
+						throw new Exception('Please provide some fields for the entity');
+					}
+
 					return $this->form()->fields()->toArray();
 				}
 			],
 			'methods' => [
+				/**
+				 * Similar to the `form()` method of the native structure field:
+				 * https://github.com/getkirby/kirby/blob/3.7.3/config/fields/structure.php#L172-L178
+				 */
 				'form' => function (array $values = []) {
 					return new Form([
 						'fields' => $this->attrs['fields'],
