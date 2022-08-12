@@ -19,7 +19,6 @@ fields:
       entity:
         fields:
           text: true
-          files: true
-          structure:
+          entity:
             fields:
               text: true

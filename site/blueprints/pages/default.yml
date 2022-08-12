@@ -1,5 +1,0 @@
-preset: page
-fields:
-  entity:
-    fields:
-      files: true

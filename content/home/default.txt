@@ -1,8 +1,1 @@
 Title: Home
-
-----
-
-Entity:
-
-files:
-  - red.svg

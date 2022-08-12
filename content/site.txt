@@ -5,6 +5,8 @@ Title: Entity Field
 Entity:
 
 text: Hello World!
+logo:
+  - logo.svg
 structure:
   - 
     url: https://example.com/foo
@@ -17,11 +19,11 @@ Structure:
 
 - 
   entity:
-    text: one
-    files:
-      - green.svg
+    text: foo
+    entity:
+      text: bar
 - 
   entity:
-    structure:
-      - 
-        text: bar
+    text: baz
+    entity:
+      text: qux
