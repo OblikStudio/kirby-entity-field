@@ -2,7 +2,7 @@
 	"name": "oblik/kirby-entity-field",
 	"description": "Kirby field that acts as a one-entry structure.",
 	"license": "MIT",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"type": "kirby-plugin",
 	"keywords": [
 		"kirby",
