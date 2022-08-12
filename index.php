@@ -69,5 +69,11 @@ App::plugin('oblik/entity-field', [
 		'toEntity' => function ($field) {
 			return new Content($field->yaml(), $field->parent());
 		}
+	],
+	'translations' => [
+		'en' => [
+			'oblik.entity-field.field' => 'Field',
+			'oblik.entity-field.fields' => 'Fields'
+		],
 	]
 ]);

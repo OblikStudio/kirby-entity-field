@@ -22,8 +22,19 @@ Structure:
     text: foo
     entity:
       text: bar
+  structure:
+    - 
+      text: one
+      number: 1
 - 
   entity:
     text: baz
     entity:
       text: qux
+  structure:
+    - 
+      text: two
+      number: 2
+    - 
+      text: three
+      number: 3

@@ -22,3 +22,7 @@ fields:
           entity:
             fields:
               text: true
+      structure:
+        fields:
+          text: true
+          number: true
