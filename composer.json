@@ -2,7 +2,7 @@
 	"name": "oblik/kirby-entity-field",
 	"description": "Kirby field that acts as a one-entry structure.",
 	"license": "MIT",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"type": "kirby-plugin",
 	"keywords": [
 		"kirby",
@@ -16,7 +16,7 @@
 		},
 		{
 			"name": "Hristiyan Dodov",
-			"email": "h.dodov@gmail.com",
+			"email": "hello@dodov.dev",
 			"homepage": "https://dodov.dev/"
 		}
 	],
@@ -29,7 +29,7 @@
 		"getkirby/composer-installer": "^1.1"
 	},
 	"extra": {
-		"installer-name": "link-field"
+		"installer-name": "entity-field"
 	},
 	"config": {
 		"allow-plugins": {
