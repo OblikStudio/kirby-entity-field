@@ -1,3 +1,5 @@
+**DEPRECATED!** Since Kirby 4, there's the new built-in [object field](https://getkirby.com/docs/reference/panel/fields/object). It works in exactly the same way. You should use it instead.
+
 # Kirby Entity Field
 
 Kirby field that allows you to add other fields to it with the intention of scoping them. It works like a Structure with one entry but with much cleaner UI.
